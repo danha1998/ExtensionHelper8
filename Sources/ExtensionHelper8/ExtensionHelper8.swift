@@ -10,7 +10,7 @@ public struct EightView: View {
     }
 
     @Binding var show: Bool
-    @State var timeRemaining = 10 // 600
+    @State var timeRemaining = 600 // 600
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     @Environment(\.scenePhase) var scenePhase
     @AppStorage("savedDate") var date: Date = Date()
