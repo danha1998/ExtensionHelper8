@@ -4,7 +4,8 @@ import SwiftUI
 @available(iOS 14.0, *)
 public struct EightView: View {
     // @State private var isShowagenciessay: Bool = false
-    public init(whenCompletePushToSeven: @escaping () -> Void, show: Binding<Bool>) {
+    public init(arrayData: [String: String], whenCompletePushToSeven: @escaping () -> Void, show: Binding<Bool>) {
+        self.arrayData = arrayData
         self.whenCompletePushToSeven = whenCompletePushToSeven
         _show = show
     }
