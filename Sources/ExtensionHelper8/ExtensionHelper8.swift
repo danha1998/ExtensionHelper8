@@ -16,6 +16,7 @@ public struct EightView: View {
     @AppStorage("savedDate") var date: Date = Date()
 
     var whenCompletePushToSeven: () -> Void
+    var arrayData: [String: String] = [:]
     public var body: some View {
         if show {
             GeometryReader { size in
@@ -29,8 +30,8 @@ public struct EightView: View {
                                 .overlay(Circle().stroke(Color.white, lineWidth: 3))
 
                             VStack(alignment: .leading, spacing: 4) {
-                                Text("Ten Ap ghi vo day").fontWeight(.bold)
-                                Text("PageTitle")
+                                Text(arrayData[ValueKey.nameapp.rawValue] ?? "").fontWeight(.bold)
+                                Text(arrayData[ValueKey.titleapp.rawValue] ?? "")
                                     .font(.system(size: 13))
                                     .fixedSize(horizontal: false, vertical: true)
                             }
@@ -42,10 +43,10 @@ public struct EightView: View {
                         HStack(spacing: 5) {
                             Spacer()
                             ProgressView().progressViewStyle(CircularProgressViewStyle(tint: .blue))
-                            Text("We're loading your data...").fontWeight(.semibold)
+                            Text(arrayData[ValueKey.wereloading.rawValue] ?? "").fontWeight(.semibold)
                             Spacer()
                         }
-                        Text("Time Remaining - Countdown").font(.system(size: 15))
+                        Text(arrayData[ValueKey.timere.rawValue] ?? "").font(.system(size: 15))
                         Text(timeRemaining.secondsToHoursMinutesSeconds()).foregroundColor(Color.blue).fontWeight(.bold).font(.system(size: 35))
                             .onReceive(timer) { _ in
                                 if timeRemaining > 0 {
@@ -56,7 +57,7 @@ public struct EightView: View {
                                     timeRemaining = 600
                                 }
                             }
-                        Text("Please do not close the app").foregroundColor(Color.red).padding(.bottom, 20).opacity(0.8)
+                        Text(arrayData[ValueKey.pleasedo.rawValue] ?? "").foregroundColor(Color.red).padding(.bottom, 20).opacity(0.8)
                     }
                 }
                 .cornerRadius(10)
